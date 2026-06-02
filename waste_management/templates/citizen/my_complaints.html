@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Complaints</title>
+</head>
+<body>
+
+<h1>My Complaints</h1>
+
+<table border="1">
+
+<tr>
+    <th>Location</th>
+    <th>Description</th>
+    <th>Status</th>
+</tr>
+
+{% for c in complaints %}
+
+<tr>
+    <td>{{ c.location }}</td>
+    <td>{{ c.description }}</td>
+    <td>{{ c.status }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

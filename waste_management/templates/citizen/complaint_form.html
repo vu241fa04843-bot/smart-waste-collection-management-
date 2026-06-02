@@ -1,0 +1,52 @@
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Location</label>
+    <input type="text" name="location"><br><br>
+
+    <label>Description</label>
+    <textarea name="description"></textarea><br><br>
+
+    <!-- Hidden fields for GPS -->
+    <input type="hidden" id="latitude" name="latitude">
+    <input type="hidden" id="longitude" name="longitude">
+
+    <button type="button" onclick="getLocation()">
+        Use My Current Location
+    </button>
+
+    <br><br>
+
+    <button type="submit">
+        Submit Complaint
+    </button>
+</form>
+<script>
+
+function getLocation(){
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position){
+
+            document.getElementById('latitude').value =
+                position.coords.latitude;
+
+            document.getElementById('longitude').value =
+                position.coords.longitude;
+
+            alert("Location Captured");
+
+        },
+
+        function(error){
+
+            alert("Please allow location access.");
+
+        }
+
+    );
+
+}
+
+</script>
