@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Waste Bin Map</title>
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+
+<body>
+
+<h1>Waste Bin Locations</h1>
+
+<div id="map"></div>
+
+<style>
+#map{
+    height:500px;
+    width:100%;
+}
+</style>
+
+<script>
+
+var map = L.map('map').setView([16.3067,80.4365],13);
+
+L.tileLayer(
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+).addTo(map);
+
+{% for complaint in complaints %}
+
+L.marker([
+    {{ complaint.latitude }},
+    {{ complaint.longitude }}
+])
+.addTo(map)
+.bindPopup(
+    "{{ complaint.location }}"
+);
+
+{% endfor %}
+
+</script>

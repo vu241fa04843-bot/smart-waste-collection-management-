@@ -1,0 +1,20 @@
+<div id="map" style="height:500px;"></div>
+
+<script>
+
+var map = L.map('map').setView([16.3067,80.4365],13);
+
+L.tileLayer(
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+).addTo(map);
+
+map.on('click', function(e){
+
+    alert(
+        "Latitude: " + e.latlng.lat +
+        "\nLongitude: " + e.latlng.lng
+    );
+
+});
+
+</script>
